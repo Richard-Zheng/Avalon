@@ -93,8 +93,27 @@ class RoleAssigner {
   }
 }
 
+class VotingHelper {
+  constructor(root) {
+    this.root = root
+    this.votePositiveCount=0
+    this.voteNegativeCount=0
+  }
+
+  showVoteResult() {
+    document.getElementById("voteResult").innerHTML = `${this.votePositiveCount}+/${this.voteNegativeCount}-`
+  }
+
+  reset() {
+    this.votePositiveCount=0
+    this.voteNegativeCount=0
+    this.showVoteResult()
+  }
+}
+
 const root = document.getElementById('roleList')
 roleList = new AddressList(root)
+votingHelper = new VotingHelper(document.getElementById('votingHelper'))
 document.getElementById("saveRole").addEventListener('click', e => {
   roleAssigner = new RoleAssigner(document.getElementById("roleAssigner"), roleList)
 })

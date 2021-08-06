@@ -63,8 +63,13 @@
 
   <h2>投票器</h2>
   <div id="votingHelper">
-    <button id="votePositive">+</button>
-    <button id="voteNegative">-</button>
+    <button id="votePositiveBtn" onclick="votingHelper.votePositiveCount++">+</button>
+    <button id="voteNegativeBtn" onclick="votingHelper.voteNegativeCount++">-</button>
+    <p id="voteResult">
+      0+/0-
+    </p>
+    <button id="showVoteResult" onclick="votingHelper.showVoteResult()">显示结果</button>
+    <button id="reset" onclick="votingHelper.reset()">重置</button>
   </div>
 
   <script src="scripts/main.js"></script>
