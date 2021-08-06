@@ -67,5 +67,51 @@ class AddressList {
   }
 }
 
+class RoleAssigner {
+  constructor(root, roleList) {
+    this.state=roleList.state.shuffle()
+    this.roleIndex=0
+
+    this.root = root
+    this.assignedNumText = document.getElementById("assignedNumText")
+    this.unassignedNumText = document.getElementById("unassignedNumText")
+    this.assignNextRoleBtn = document.getElementById("assignNextRoleBtn")
+    this.roleText = document.getElementById("roleText")
+    this.currentRoleShowPara = document.getElementById("currentRoleShow")
+
+    this.assignedNumText.innerHTML = "0"
+    this.unassignedNumText.innerHTML = this.state.length
+    this.assignNextRoleBtn.addEventListener('click', e => {
+      this.assignNextRole()
+      this.currentRoleShowPara.hidden = false
+      if (this.roleIndex >= this.state.length) {
+        this.assignNextRoleBtn.hidden = true
+      }
+    })
+  }
+
+  assignNextRole() {
+    this.roleText.innerHTML = this.state[this.roleIndex].address
+    this.roleIndex++
+  }
+}
+
 const root = document.getElementById('roleList')
-new AddressList(root)
+roleList = new AddressList(root)
+document.getElementById("saveRole").addEventListener('click', e => {
+  roleAssigner = new RoleAssigner(document.getElementById("roleAssigner"), roleList)
+})
+
+Array.prototype.shuffle = function() {
+  var input = this;
+
+  for (var i = input.length-1; i >=0; i--) {
+
+      var randomIndex = Math.floor(Math.random()*(i+1));
+      var itemAtIndex = input[randomIndex];
+
+      input[randomIndex] = input[i];
+      input[i] = itemAtIndex;
+  }
+  return input;
+}
