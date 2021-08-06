@@ -79,23 +79,17 @@ class RoleAssigner {
     this.roleText = document.getElementById("roleText")
     this.currentRoleShowPara = document.getElementById("currentRoleShow")
     this.hideRoleTextBtn = document.getElementById("hideRoleTextBtn")
-
-    this.assignNextRoleBtn.addEventListener('click', e => {
-      this.assignNextRole()
-      this.currentRoleShowPara.hidden = false
-      if (this.roleIndex >= this.state.length) {
-        this.assignNextRoleBtn.hidden = true
-      }
-    })
-    this.hideRoleTextBtn.addEventListener('click', e => {
-      this.currentRoleShowPara.hidden = true
-    })
+    this.assignNextRoleBtn.hidden = false
   }
 
   assignNextRole() {
     this.roleText.innerHTML = this.state[this.roleIndex].address
     this.roleIndex++
     this.assignProgressText.innerHTML = `${this.roleIndex}/${this.state.length}`
+      this.currentRoleShowPara.hidden = false
+      if (this.roleIndex >= this.state.length) {
+        this.assignNextRoleBtn.hidden = true
+      }
   }
 }
 

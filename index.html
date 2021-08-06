@@ -54,11 +54,17 @@
   <h2>角色抽取</h2>
   <div id="roleAssigner">
     抽取进度：<span id="assignProgressText">0/0</span>
-    <button id="assignNextRoleBtn">抽取下一个角色</button>
+    <button id="assignNextRoleBtn" onclick="roleAssigner.assignNextRole()">抽取下一个角色</button>
     <p id="currentRoleShow" hidden>
       <span id="roleText">角色名</span>
-      <button id="hideRoleTextBtn">隐藏</button>
+      <button id="hideRoleTextBtn" onclick="document.getElementById('currentRoleShow').hidden = true">隐藏</button>
     </p>
+  </div>
+
+  <h2>投票器</h2>
+  <div id="votingHelper">
+    <button id="votePositive">+</button>
+    <button id="voteNegative">-</button>
   </div>
 
   <script src="scripts/main.js"></script>
